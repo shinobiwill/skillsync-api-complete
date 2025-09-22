@@ -1,0 +1,54 @@
+# FastAPI e servidor
+fastapi
+uvicorn[standard]
+python-multipart
+
+# Banco de dados
+pyodbc
+pymongo
+motor
+sqlalchemy
+alembic
+
+# Autenticação e segurança
+python-jose[cryptography]
+passlib[bcrypt]
+python-decouple
+
+# Validação e serialização
+pydantic
+pydantic-settings
+
+# Azure e cloud
+azure-storage-blob
+azure-identity
+azure-keyvault-secrets
+
+# IA e ML
+openai
+azure-cognitiveservices-language-textanalytics
+
+# Utilitários
+httpx
+aiofiles
+python-dateutil
+email-validator
+
+# Logging e monitoramento
+structlog
+opencensus-ext-azure
+
+# Cache
+redis
+aioredis
+
+# Testes
+pytest
+pytest-asyncio
+httpx
+
+# Desenvolvimento
+black
+isort
+flake8
+mypy
