@@ -1,5 +1,6 @@
 """
 Aplicação Principal SkillSync API
+Seguindo Arquitetura IT Valley
 """
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,8 +13,7 @@ from datetime import datetime
 
 from core.config import settings
 from api import auth
-# from data.mongo_repository import MongoRepository
-from schemas.responses.responses import ErrorResponse, HealthCheckResponse
+from schemas.responses import ErrorResponse, HealthCheckResponse
 
 # Configurar logging
 logging.basicConfig(
@@ -21,9 +21,6 @@ logging.basicConfig(
     format=settings.LOG_FORMAT
 )
 logger = logging.getLogger(__name__)
-
-# Instância global do MongoDB (comentado por enquanto)
-# mongo_repo = MongoRepository()
 
 
 @asynccontextmanager
@@ -64,7 +61,7 @@ async def lifespan(app: FastAPI):
 app = FastAPI(
     title=settings.APP_NAME,
     version=settings.APP_VERSION,
-    description="API para análise de currículos e compatibilidade com vagas",
+    description="API para análise de currículos e compatibilidade com vagas - Arquitetura IT Valley",
     docs_url="/docs" if settings.DEBUG else None,
     redoc_url="/redoc" if settings.DEBUG else None,
     lifespan=lifespan
@@ -166,9 +163,10 @@ app.include_router(auth.router, prefix=settings.API_V1_STR)
 async def root():
     """Endpoint raiz"""
     return {
-        "message": "SkillSync API",
+        "message": "SkillSync API - Arquitetura IT Valley",
         "version": settings.APP_VERSION,
         "status": "running",
+        "architecture": "IT Valley",
         "timestamp": datetime.utcnow()
     }
 
@@ -239,7 +237,8 @@ async def get_metrics():
         "active_users": 0,
         "database_connections": 0,
         "memory_usage_mb": 0.0,
-        "cpu_usage_percentage": 0.0
+        "cpu_usage_percentage": 0.0,
+        "architecture": "IT Valley"
     }
 
 
@@ -247,7 +246,7 @@ if __name__ == "__main__":
     import uvicorn
     
     uvicorn.run(
-        "main:app",
+        "app:app",
         host=settings.HOST,
         port=settings.PORT,
         reload=settings.DEBUG,
