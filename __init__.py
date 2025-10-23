@@ -1,3 +1,0 @@
-"""
-SkillSync API Package
-"""
